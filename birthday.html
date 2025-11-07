@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Anees Mohammad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Amiri', serif;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .header {
+            margin-bottom: 30px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .header h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 4rem;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+            margin-bottom: 10px;
+            color: #FFD700;
+        }
+
+        .header p {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .age-box {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 15px;
+            margin: 20px auto;
+            max-width: 300px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+        }
+
+        .age-box h2 {
+            font-size: 2rem;
+            color: #FFD700;
+        }
+
+        .wishes {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            animation: slideUp 1.5s ease-out;
+        }
+
+        .wishes h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #FFD700;
+        }
+
+        .wishes p {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .islamic-design {
+            position: relative;
+            margin: 30px 0;
+        }
+
+        .islamic-design i {
+            font-size: 3rem;
+            color: #FFD700;
+            margin: 0 15px;
+            animation: rotate 10s linear infinite;
+        }
+
+        .games-section {
+            margin: 40px 0;
+        }
+
+        .games-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #FFD700;
+        }
+
+        .games-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .game-card {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            width: 200px;
+            cursor: pointer;
+            transition: transform 0.3s, background 0.3s;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .game-card i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #FFD700;
+        }
+
+        .game-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f);
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            animation: popIn 0.5s ease-out;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #FFD700;
+        }
+
+        .cake {
+            margin: 30px auto;
+            width: 200px;
+            height: 100px;
+            position: relative;
+        }
+
+        .cake-layer {
+            position: absolute;
+            width: 200px;
+            height: 40px;
+            background: #FFD700;
+            border-radius: 50% 50% 0 0;
+        }
+
+        .cake-layer:nth-child(1) {
+            bottom: 0;
+            background: #8B4513;
+        }
+
+        .cake-layer:nth-child(2) {
+            bottom: 30px;
+            background: #D2691E;
+        }
+
+        .cake-layer:nth-child(3) {
+            bottom: 60px;
+            background: #FFD700;
+            height: 20px;
+        }
+
+        .candle {
+            position: absolute;
+            width: 10px;
+            height: 30px;
+            background: #FF4500;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .flame {
+            position: absolute;
+            width: 15px;
+            height: 25px;
+            background: #FFA500;
+            border-radius: 50% 50% 20% 20%;
+            bottom: 110px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: flicker 0.5s infinite alternate;
+            box-shadow: 0 0 20px #FF4500;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 20px;
+            background: #FFD700;
+            opacity: 0;
+            z-index: 1000;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes flicker {
+            0% { transform: translateX(-50%) scale(1); }
+            100% { transform: translateX(-50%) scale(1.1); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        footer {
+            margin-top: 30px;
+            padding: 20px;
+            font-size: 1.2rem;
+            color: #FFD700;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .wishes p {
+                font-size: 1.2rem;
+            }
+            
+            .games-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="floating">Happy Birthday!</h1>
+            <p>Celebrating Anees Mohammad</p>
+            <div class="age-box">
+                <h2 id="age">Age: Calculating...</h2>
+            </div>
+        </div>
+
+        <div class="islamic-design">
+            <i class="fas fa-star-and-crescent"></i>
+            <i class="fas fa-mosque"></i>
+            <i class="fas fa-quran"></i>
+            <i class="fas fa-pray"></i>
+            <i class="fas fa-hands-praying"></i>
+        </div>
+
+        <div class="wishes">
+            <h2>Islamic Birthday Wishes</h2>
+            <p>May Allah bless you with a long, healthy, and prosperous life filled with happiness and peace.</p>
+            <p>On your special day, may Allah accept all your prayers and grant you success in this life and the hereafter.</p>
+            <p>بارك الله فيك وعمرك مع الصحه والعافيه</p>
+            <p>May this new year of your life bring you closer to Allah and His blessings.</p>
+        </div>
+
+        <div class="cake">
+            <div class="cake-layer"></div>
+            <div class="cake-layer"></div>
+            <div class="cake-layer"></div>
+            <div class="candle"></div>
+            <div class="flame"></div>
+        </div>
+
+        <div class="games-section">
+            <h2>Fun Games</h2>
+            <div class="games-container">
+                <div class="game-card" onclick="openModal('duaModal')">
+                    <i class="fas fa-hands-praying"></i>
+                    <h3>Make a Dua</h3>
+                    <p>Send blessings to Anees</p>
+                </div>
+                <div class="game-card" onclick="openModal('quizModal')">
+                    <i class="fas fa-question-circle"></i>
+                    <h3>Islamic Quiz</h3>
+                    <p>Test your knowledge</p>
+                </div>
+                <div class="game-card" onclick="openModal('memoryModal')">
+                    <i class="fas fa-brain"></i>
+                    <h3>Memory Game</h3>
+                    <p>Match Islamic symbols</p>
+                </div>
+                <div class="game-card" onclick="createConfetti()">
+                    <i class="fas fa-birthday-cake"></i>
+                    <h3>Celebrate!</h3>
+                    <p>Virtual party</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Made with ❤️ for Anees Mohammad | Born: 07/11/2002</p>
+        </footer>
+    </div>
+
+    <!-- Dua Modal -->
+    <div id="duaModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('duaModal')">&times;</span>
+            <h2>Make a Dua for Anees</h2>
+            <p>اللهم بارك له في عمره، واغفر له ذنبه، ووسع له في رزقه، وادخله الجنة بغير حساب</p>
+            <p>O Allah, bless him in his life, forgive his sins, expand his provision, and admit him to Paradise without reckoning.</p>
+            <button onclick="closeModal('duaModal')" style="margin-top: 20px; padding: 10px 20px; background: #FFD700; border: none; border-radius: 10px; font-size: 1.2rem; cursor: pointer;">Ameen</button>
+        </div>
+    </div>
+
+    <!-- Quiz Modal -->
+    <div id="quizModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('quizModal')">&times;</span>
+            <h2>Islamic Quiz</h2>
+            <div id="quizQuestion">
+                <p>How many pillars of Islam are there?</p>
+                <button onclick="checkAnswer(5, this)" class="quiz-option">5</button>
+                <button onclick="checkAnswer(6, this)" class="quiz-option">6</button>
+                <button onclick="checkAnswer(4, this)" class="quiz-option">4</button>
+                <button onclick="checkAnswer(7, this)" class="quiz-option">7</button>
+            </div>
+            <p id="quizResult" style="margin-top: 15px; font-weight: bold;"></p>
+        </div>
+    </div>
+
+    <!-- Memory Game Modal -->
+    <div id="memoryModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('memoryModal')">&times;</span>
+            <h2>Islamic Memory Game</h2>
+            <div id="memoryGame" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 20px 0;">
+                <!-- Cards will be generated by JavaScript -->
+            </div>
+            <p id="memoryScore">Matches: 0/8</p>
+        </div>
+    </div>
+
+    <script>
+        // Calculate age
+        function calculateAge() {
+            const birthDate = new Date(2002, 10, 7); // Month is 0-indexed (10 = November)
+            const today = new Date();
+            
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const monthDiff = today.getMonth() - birthDate.getMonth();
+            
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            
+            document.getElementById('age').textContent = `Age: ${age} years old`;
+        }
+
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+            
+            if (modalId === 'memoryModal') {
+                initializeMemoryGame();
+            }
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Quiz function
+        function checkAnswer(correctAnswer, button) {
+            const userAnswer = parseInt(button.textContent);
+            const resultElement = document.getElementById('quizResult');
+            
+            if (userAnswer === correctAnswer) {
+                resultElement.textContent = "Correct! May Allah reward you.";
+                resultElement.style.color = "#90EE90";
+            } else {
+                resultElement.textContent = "Incorrect. The correct answer is 5.";
+                resultElement.style.color = "#FF7F7F";
+            }
+            
+            // Disable all buttons after answering
+            const buttons = document.querySelectorAll('.quiz-option');
+            buttons.forEach(btn => {
+                btn.disabled = true;
+                if (parseInt(btn.textContent) === correctAnswer) {
+                    btn.style.background = "#90EE90";
+                }
+            });
+        }
+
+        // Memory Game
+        function initializeMemoryGame() {
+            const symbols = ['mosque', 'quran', 'star-and-crescent', 'pray', 'hands-praying', 'kaaba', 'date-fruit', 'prayer-mat'];
+            const cards = [...symbols, ...symbols]; // Duplicate for pairs
+            const shuffledCards = shuffleArray(cards);
+            
+            const memoryGame = document.getElementById('memoryGame');
+            memoryGame.innerHTML = '';
+            
+            shuffledCards.forEach((symbol, index) => {
+                const card = document.createElement('div');
+                card.className = 'game-card memory-card';
+                card.innerHTML = `<i class="fas fa-${symbol}"></i>`;
+                card.dataset.symbol = symbol;
+                card.dataset.index = index;
+                card.onclick = () => flipCard(card);
+                memoryGame.appendChild(card);
+            });
+            
+            // Reset game state
+            memoryGame.flippedCards = [];
+            memoryGame.matchedPairs = 0;
+            document.getElementById('memoryScore').textContent = 'Matches: 0/8';
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function flipCard(card) {
+            // If card is already flipped or matched, do nothing
+            if (card.classList.contains('flipped') || card.classList.contains('matched')) {
+                return;
+            }
+            
+            // Flip the card
+            card.classList.add('flipped');
+            card.style.background = '#FFD700';
+            
+            const memoryGame = document.getElementById('memoryGame');
+            memoryGame.flippedCards.push(card);
+            
+            // Check for match if two cards are flipped
+            if (memoryGame.flippedCards.length === 2) {
+                const card1 = memoryGame.flippedCards[0];
+                const card2 = memoryGame.flippedCards[1];
+                
+                if (card1.dataset.symbol === card2.dataset.symbol) {
+                    // Match found
+                    card1.classList.add('matched');
+                    card2.classList.add('matched');
+                    memoryGame.matchedPairs++;
+                    document.getElementById('memoryScore').textContent = `Matches: ${memoryGame.matchedPairs}/8`;
+                    
+                    // Check if game is complete
+                    if (memoryGame.matchedPairs === 8) {
+                        setTimeout(() => {
+                            alert('Masha Allah! You completed the game!');
+                        }, 500);
+                    }
+                    
+                    memoryGame.flippedCards = [];
+                } else {
+                    // No match, flip cards back after a delay
+                    setTimeout(() => {
+                        card1.classList.remove('flipped');
+                        card2.classList.remove('flipped');
+                        card1.style.background = '';
+                        card2.style.background = '';
+                        memoryGame.flippedCards = [];
+                    }, 1000);
+                }
+            }
+        }
+
+        // Confetti effect
+        function createConfetti() {
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.background = getRandomColor();
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                document.body.appendChild(confetti);
+                
+                // Animate confetti
+                const animation = confetti.animate([
+                    { top: '-20px', opacity: 1 },
+                    { top: '100vh', opacity: 0 }
+                ], {
+                    duration: Math.random() * 3000 + 2000,
+                    easing: 'cubic-bezier(0.1, 0.8, 0.9, 0.1)'
+                });
+                
+                // Remove confetti after animation
+                animation.onfinish = () => {
+                    confetti.remove();
+                };
+            }
+        }
+
+        function getRandomColor() {
+            const colors = ['#FFD700', '#FF6B6B', '#4ECDC4', '#FFA500', '#A8E6CF', '#D4A5A5'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        // Initialize the page
+        window.onload = function() {
+            calculateAge();
+            
+            // Close modal when clicking outside
+            window.onclick = function(event) {
+                const modals = document.getElementsByClassName('modal');
+                for (let modal of modals) {
+                    if (event.target === modal) {
+                        modal.style.display = 'none';
+                    }
+                }
+            }
+        };
+    </script>
+</body>
+</html>
